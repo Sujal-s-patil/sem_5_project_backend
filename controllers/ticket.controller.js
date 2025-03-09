@@ -52,11 +52,25 @@ const lastComplaintId = async (req, res) => {
         }
     })
 }
+const ticketStatus = async (req, res) => {
+    const data = req.body;
 
+    db.query(`UPDATE ticket SET status = ? WHERE complaint_id = ?`, [data.status, data.complaint_id], (error, results) => {
+            if (error) {
+                res.json({ message: "Error updating ticket status", error });
+            } else if (results.affectedRows === 0) {
+                res.json({ message: "No ticket found with the given complaint ID" });
+            } else {
+                res.json(results);
+            }
+        }
+    );
+};
 
 module.exports = {
     ticketRecords,
     createTicket,
     specificTicket,
-    lastComplaintId
+    lastComplaintId,
+     ticketStatus
 }
