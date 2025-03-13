@@ -52,10 +52,15 @@ const lastComplaintId = async (req, res) => {
         }
     })
 }
-
 const ticketStatus = async (req, res) => {
     const data = req.body;
 
+<<<<<<< HEAD
+const ticketStatus = async (req, res) => {
+    const data = req.body;
+
+=======
+>>>>>>> b58fea8cbc27f04510e894b568772afa2a0fc906
     db.query(`UPDATE ticket SET status = ? WHERE complaint_id = ?`, [data.status, data.complaint_id], (error, results) => {
             if (error) {
                 res.json({ message: "Error updating ticket status", error });
@@ -67,12 +72,20 @@ const ticketStatus = async (req, res) => {
         }
     );
 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> b58fea8cbc27f04510e894b568772afa2a0fc906
 
 module.exports = {
     ticketRecords,
     createTicket,
     specificTicket,
     lastComplaintId,
+<<<<<<< HEAD
     ticketStatus
 }
+=======
+     ticketStatus
+}
+>>>>>>> b58fea8cbc27f04510e894b568772afa2a0fc906
