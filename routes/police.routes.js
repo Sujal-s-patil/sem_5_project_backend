@@ -1,7 +1,7 @@
 const express = require("express");
 
 const policeRouter = express.Router();
-const { policeLogin,policeRegister,getTeamInfo,specific_police} = require("../controllers/police.controller.js")
+const { policeLogin,policeRegister,getTeamInfo,specificPolice,assignPolice} = require("../controllers/police.controller.js")
 
 /* policeRouter.get("/", getPoliceInfos);
 policeRouter.get("/:username", getPoliceInfo); */
@@ -9,7 +9,8 @@ policeRouter.get("/:username", getPoliceInfo); */
 policeRouter.get("/team",getTeamInfo);
 policeRouter.post("/login",policeLogin);
 policeRouter.post("/register",policeRegister);
-policeRouter.post("/specific",specific_police);
+policeRouter.post("/specific",specificPolice);
+policeRouter.put("/assign",assignPolice);
 
 
 module.exports =  policeRouter;

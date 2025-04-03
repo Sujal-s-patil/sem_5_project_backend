@@ -53,7 +53,7 @@ const getTeamInfo = async (req, res) => {
     })
 }
 
-const specific_police = async (req, res) => {
+const specificPolice = async (req, res) => {
     const data = req.body;
     const keys = Object.keys(data);
     const values = Object.values(data);
@@ -68,11 +68,26 @@ const specific_police = async (req, res) => {
     })
 }
 
+const assignPolice = async (req, res) => {
+    const data = req.body;
+    db.query(`UPDATE police SET occupied = ? , complaint_id = ? WHERE police_id = ?`, [data.occupied, data.complaint_id,data.police_id], (error, results) => {
+            if (error) {
+                res.json({ message: "Error assigning police", error });
+            } else if (results.affectedRows === 0) {
+                res.json({ message: "No ticket found with the given complaint ID" });
+            } else {
+                res.json(results);
+            }
+        }
+    );
+};
+
 module.exports = {
     policeRegister,
     policeLogin,
     getTeamInfo,
-    specific_police
+    specificPolice,
+    assignPolice
 };
 
 
