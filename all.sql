@@ -43,7 +43,7 @@ CREATE TABLE police (
     occupied BOOLEAN DEFAULT FALSE,
     complaint_id INT DEFAULT NULL
 );
-
+    
 
 CREATE TABLE
     public (
